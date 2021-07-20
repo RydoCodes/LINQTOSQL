@@ -75,6 +75,7 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Part 2InsertUpdateDeleteusingLINQtoSQL.aspx" />
     <Content Include="RydoModel.Context.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
       <LastGenOutput>RydoModel.Context.cs</LastGenOutput>
@@ -94,6 +95,13 @@
     </Compile>
     <Compile Include="Employees.cs">
       <DependentUpon>RydoModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Part 2InsertUpdateDeleteusingLINQtoSQL.aspx.cs">
+      <DependentUpon>Part 2InsertUpdateDeleteusingLINQtoSQL.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Part 2InsertUpdateDeleteusingLINQtoSQL.aspx.designer.cs">
+      <DependentUpon>Part 2InsertUpdateDeleteusingLINQtoSQL.aspx</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="RydoModel.Context.cs">
