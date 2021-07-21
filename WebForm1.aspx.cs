@@ -13,21 +13,28 @@ namespace LINQTOSQL
         {
             RydoEntities rydodbContext = new RydoEntities();
 
-         //START-----------------List of Employees.--------------
+            //START-----------------List of Employees in easy way.--------------
             //List<Employees> rydolistemployees = rydodbContext.Employees.ToList();
             //GridView1.DataSource = rydolistemployees.ToList();
             //GridView1.DataBind();
-         //END-----------------List of Employees.--------------
+            //END-----------------List of Employees in easy way.--------------
 
-
-         // START----------------List of "MALE" Employees.--------
-            IQueryable<Employees> rydolistemployees = from rydoemployee in rydodbContext.Employees
-                                                where rydoemployee.Gender=="Male"
-                                                orderby rydoemployee.Salary descending
-                                                select rydoemployee;
-
-            GridView1.DataSource = rydolistemployees.ToList();
+            //START-----------------List of Employees using LINQ Quert.--------------
+                IQueryable<Employees> rydolistemployees = from rydoemployee in rydodbContext.Employees
+                                                          select rydoemployee;
+                GridView1.DataSource = rydolistemployees.ToList();
             GridView1.DataBind();
+            //END-----------------List of Employees in easy way.--------------
+
+
+            // START----------------List of "MALE" Employees.--------
+            //IQueryable<Employees> rydolistemployees = from rydoemployee in rydodbContext.Employees
+            //                                    where rydoemployee.Gender=="Male"
+            //                                    orderby rydoemployee.Salary descending
+            //                                    select rydoemployee;
+
+            //GridView1.DataSource = rydolistemployees.ToList();
+            //GridView1.DataBind();
 
             //            SELECT
             //    [Extent1].[ID] AS[ID], 
