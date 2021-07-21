@@ -12,6 +12,8 @@ namespace LINQTOSQL
     using System;
     using System.Data.Entity;
     using System.Data.Entity.Infrastructure;
+    using System.Data.Entity.Core.Objects;
+    using System.Linq;
     
     public partial class RydoEntities : DbContext
     {
@@ -25,7 +27,12 @@ namespace LINQTOSQL
             throw new UnintentionalCodeFirstException();
         }
     
-        public virtual DbSet<Departments> Departments { get; set; }
-        public virtual DbSet<Employees> Employees { get; set; }
+        public virtual DbSet<Department> Departments { get; set; }
+        public virtual DbSet<Employee> Employees { get; set; }
+    
+        public virtual ObjectResult<GetEmployees_Result> GetEmployees()
+        {
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<GetEmployees_Result>("GetEmployees");
+        }
     }
 }

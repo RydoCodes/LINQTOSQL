@@ -20,7 +20,7 @@ namespace LINQTOSQL
             //END-----------------List of Employees in easy way.--------------
 
             //START-----------------List of Employees using LINQ Quert.--------------
-                IQueryable<Employees> rydolistemployees = from rydoemployee in rydodbContext.Employees
+                IQueryable<Employee> rydolistemployees = from rydoemployee in rydodbContext.Employees
                                                           select rydoemployee;
                 GridView1.DataSource = rydolistemployees.ToList();
             GridView1.DataBind();

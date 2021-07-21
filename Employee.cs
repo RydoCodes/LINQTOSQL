@@ -12,19 +12,15 @@ namespace LINQTOSQL
     using System;
     using System.Collections.Generic;
     
-    public partial class Departments
+    public partial class Employee
     {
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public Departments()
-        {
-            this.Employees = new HashSet<Employees>();
-        }
-    
         public int ID { get; set; }
-        public string Name { get; set; }
-        public string Location { get; set; }
+        public string FirstName { get; set; }
+        public string LastName { get; set; }
+        public string Gender { get; set; }
+        public Nullable<int> Salary { get; set; }
+        public Nullable<int> DepartmentId { get; set; }
     
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Employees> Employees { get; set; }
+        public virtual Department Department { get; set; }
     }
 }

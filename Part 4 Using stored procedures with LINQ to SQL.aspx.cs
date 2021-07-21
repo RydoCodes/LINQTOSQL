@@ -7,20 +7,17 @@ using System.Web.UI.WebControls;
 
 namespace LINQTOSQL
 {
-    public partial class Part_2InsertUpdateDeleteusingLINQtoSQL : System.Web.UI.Page
+    public partial class Part_4_Using_stored_procedures_with_LINQ_to_SQL : System.Web.UI.Page
     {
         protected void Page_Load(object sender, EventArgs e)
         {
             GetAllRydoEmployees();
         }
 
-        private void GetAllRydoEmployees() 
+        private void GetAllRydoEmployees()
         {
             RydoEntities rydodbContext = new RydoEntities();
-            IQueryable<Employee> rydolistemployees = from rydoemployee in rydodbContext.Employees
-                                                      where rydoemployee.Gender == "Male"
-                                                      orderby rydoemployee.Salary descending
-                                                      select rydoemployee;
+            var rydolistemployees = rydodbContext.GetEmployees();
 
             GridView1.DataSource = rydolistemployees.ToList();
             GridView1.DataBind();
@@ -37,11 +34,11 @@ namespace LINQTOSQL
             {
                 Employee newEmployee = new Employee
                 {
-                    FirstName="Tim",
-                    LastName="T",
-                    Gender="Male",
-                    Salary=55000,
-                    DepartmentId=1
+                    FirstName = "Tim",
+                    LastName = "T",
+                    Gender = "Male",
+                    Salary = 55000,
+                    DepartmentId = 1
                 };
 
                 rydodbContext.Employees.Add(newEmployee);

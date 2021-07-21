@@ -10,17 +10,13 @@
 namespace LINQTOSQL
 {
     using System;
-    using System.Collections.Generic;
     
-    public partial class Employees
+    public partial class GetEmployees_Result
     {
         public int ID { get; set; }
         public string FirstName { get; set; }
         public string LastName { get; set; }
         public string Gender { get; set; }
         public Nullable<int> Salary { get; set; }
-        public Nullable<int> DepartmentId { get; set; } 
-    
-        public virtual Departments Departments { get; set; }
     }
 }

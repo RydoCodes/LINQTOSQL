@@ -4,10 +4,10 @@
   <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
-      <Diagram DiagramId="8994612bb3b94461bd5cbcbea5d0069a" Name="Diagram1">
-        <EntityTypeShape EntityType="RydoDataModel.Departments" Width="1.5" PointX="0.75" PointY="1.25" IsExpanded="true" />
-        <EntityTypeShape EntityType="RydoDataModel.Employees" Width="1.5" PointX="3" PointY="1" IsExpanded="true" />
-        <AssociationConnector Association="RydoDataModel.FK__Employees__Depar__0519C6AF" ManuallyRouted="false" />
+      <Diagram DiagramId="620503899b4f491b8bbfc49880d39ba4" Name="Diagram1">
+        <EntityTypeShape EntityType="LINQTOSQLModel.Department" Width="1.5" PointX="0.75" PointY="1.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="LINQTOSQLModel.Employee" Width="1.5" PointX="3" PointY="1" IsExpanded="true" />
+        <AssociationConnector Association="LINQTOSQLModel.FK__Employees__Depar__0519C6AF" ManuallyRouted="false" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>
