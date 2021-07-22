@@ -36,7 +36,25 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Function Name="DeleteEmployee" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="ID" Type="int" Mode="In" />
+        </Function>
         <Function Name="GetEmployees" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+        <Function Name="InsertEmployee" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="FirstName" Type="nvarchar" Mode="In" />
+          <Parameter Name="LastName" Type="nvarchar" Mode="In" />
+          <Parameter Name="Gender" Type="nvarchar" Mode="In" />
+          <Parameter Name="Salary" Type="int" Mode="In" />
+          <Parameter Name="DepartmentId" Type="int" Mode="In" />
+        </Function>
+        <Function Name="UpdateEmployee" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="ID" Type="int" Mode="In" />
+          <Parameter Name="FirstName" Type="nvarchar" Mode="In" />
+          <Parameter Name="LastName" Type="nvarchar" Mode="In" />
+          <Parameter Name="Gender" Type="nvarchar" Mode="In" />
+          <Parameter Name="Salary" Type="int" Mode="In" />
+          <Parameter Name="DepartmentId" Type="int" Mode="In" />
+        </Function>
         <EntityContainer Name="LINQTOSQLModelStoreContainer">
           <EntitySet Name="Departments" EntityType="Self.Departments" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Employees" EntityType="Self.Employees" Schema="dbo" store:Type="Tables" />
@@ -90,7 +108,25 @@
             <End Role="Departments" EntitySet="Departments" />
             <End Role="Employees" EntitySet="Employees" />
           </AssociationSet>
+          <FunctionImport Name="DeleteEmployee">
+            <Parameter Name="ID" Mode="In" Type="Int32" />
+          </FunctionImport>
           <FunctionImport Name="GetEmployees" ReturnType="Collection(LINQTOSQLModel.GetEmployees_Result)" />
+          <FunctionImport Name="InsertEmployee">
+            <Parameter Name="FirstName" Mode="In" Type="String" />
+            <Parameter Name="LastName" Mode="In" Type="String" />
+            <Parameter Name="Gender" Mode="In" Type="String" />
+            <Parameter Name="Salary" Mode="In" Type="Int32" />
+            <Parameter Name="DepartmentId" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="UpdateEmployee">
+            <Parameter Name="ID" Mode="In" Type="Int32" />
+            <Parameter Name="FirstName" Mode="In" Type="String" />
+            <Parameter Name="LastName" Mode="In" Type="String" />
+            <Parameter Name="Gender" Mode="In" Type="String" />
+            <Parameter Name="Salary" Mode="In" Type="Int32" />
+            <Parameter Name="DepartmentId" Mode="In" Type="Int32" />
+          </FunctionImport>
         </EntityContainer>
         <ComplexType Name="GetEmployees_Result">
           <Property Type="Int32" Name="ID" Nullable="false" />
@@ -126,6 +162,7 @@
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
+          <FunctionImportMapping FunctionImportName="DeleteEmployee" FunctionName="LINQTOSQLModel.Store.DeleteEmployee" />
           <FunctionImportMapping FunctionImportName="GetEmployees" FunctionName="LINQTOSQLModel.Store.GetEmployees">
             <ResultMapping>
               <ComplexTypeMapping TypeName="LINQTOSQLModel.GetEmployees_Result">
@@ -137,6 +174,8 @@
               </ComplexTypeMapping>
             </ResultMapping>
           </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="InsertEmployee" FunctionName="LINQTOSQLModel.Store.InsertEmployee" />
+          <FunctionImportMapping FunctionImportName="UpdateEmployee" FunctionName="LINQTOSQLModel.Store.UpdateEmployee" />
         </EntityContainerMapping>
       </Mapping>
     </edmx:Mappings>

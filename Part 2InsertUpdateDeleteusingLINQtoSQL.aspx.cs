@@ -14,13 +14,13 @@ namespace LINQTOSQL
             GetAllRydoEmployees();
         }
 
-        private void GetAllRydoEmployees() 
+        private void GetAllRydoEmployees()
         {
             RydoEntities rydodbContext = new RydoEntities();
             IQueryable<Employee> rydolistemployees = from rydoemployee in rydodbContext.Employees
-                                                      where rydoemployee.Gender == "Male"
-                                                      orderby rydoemployee.Salary descending
-                                                      select rydoemployee;
+                                                     where rydoemployee.Gender == "Male"
+                                                     orderby rydoemployee.Salary descending
+                                                     select rydoemployee;
 
             GridView1.DataSource = rydolistemployees.ToList();
             GridView1.DataBind();
@@ -37,11 +37,11 @@ namespace LINQTOSQL
             {
                 Employee newEmployee = new Employee
                 {
-                    FirstName="Tim",
-                    LastName="T",
-                    Gender="Male",
-                    Salary=55000,
-                    DepartmentId=1
+                    FirstName = "Tim",
+                    LastName = "T",
+                    Gender = "Male",
+                    Salary = 55000,
+                    DepartmentId = 1
                 };
 
                 rydodbContext.Employees.Add(newEmployee);

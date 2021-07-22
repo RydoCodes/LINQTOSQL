@@ -30,9 +30,72 @@ namespace LINQTOSQL
         public virtual DbSet<Department> Departments { get; set; }
         public virtual DbSet<Employee> Employees { get; set; }
     
+        public virtual int DeleteEmployee(Nullable<int> iD)
+        {
+            var iDParameter = iD.HasValue ?
+                new ObjectParameter("ID", iD) :
+                new ObjectParameter("ID", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("DeleteEmployee", iDParameter);
+        }
+    
         public virtual ObjectResult<GetEmployees_Result> GetEmployees()
         {
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<GetEmployees_Result>("GetEmployees");
+        }
+    
+        public virtual int InsertEmployee(string firstName, string lastName, string gender, Nullable<int> salary, Nullable<int> departmentId)
+        {
+            var firstNameParameter = firstName != null ?
+                new ObjectParameter("FirstName", firstName) :
+                new ObjectParameter("FirstName", typeof(string));
+    
+            var lastNameParameter = lastName != null ?
+                new ObjectParameter("LastName", lastName) :
+                new ObjectParameter("LastName", typeof(string));
+    
+            var genderParameter = gender != null ?
+                new ObjectParameter("Gender", gender) :
+                new ObjectParameter("Gender", typeof(string));
+    
+            var salaryParameter = salary.HasValue ?
+                new ObjectParameter("Salary", salary) :
+                new ObjectParameter("Salary", typeof(int));
+    
+            var departmentIdParameter = departmentId.HasValue ?
+                new ObjectParameter("DepartmentId", departmentId) :
+                new ObjectParameter("DepartmentId", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("InsertEmployee", firstNameParameter, lastNameParameter, genderParameter, salaryParameter, departmentIdParameter);
+        }
+    
+        public virtual int UpdateEmployee(Nullable<int> iD, string firstName, string lastName, string gender, Nullable<int> salary, Nullable<int> departmentId)
+        {
+            var iDParameter = iD.HasValue ?
+                new ObjectParameter("ID", iD) :
+                new ObjectParameter("ID", typeof(int));
+    
+            var firstNameParameter = firstName != null ?
+                new ObjectParameter("FirstName", firstName) :
+                new ObjectParameter("FirstName", typeof(string));
+    
+            var lastNameParameter = lastName != null ?
+                new ObjectParameter("LastName", lastName) :
+                new ObjectParameter("LastName", typeof(string));
+    
+            var genderParameter = gender != null ?
+                new ObjectParameter("Gender", gender) :
+                new ObjectParameter("Gender", typeof(string));
+    
+            var salaryParameter = salary.HasValue ?
+                new ObjectParameter("Salary", salary) :
+                new ObjectParameter("Salary", typeof(int));
+    
+            var departmentIdParameter = departmentId.HasValue ?
+                new ObjectParameter("DepartmentId", departmentId) :
+                new ObjectParameter("DepartmentId", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("UpdateEmployee", iDParameter, firstNameParameter, lastNameParameter, genderParameter, salaryParameter, departmentIdParameter);
         }
     }
 }

@@ -20,9 +20,9 @@ namespace LINQTOSQL
             //END-----------------List of Employees in easy way.--------------
 
             //START-----------------List of Employees using LINQ Quert.--------------
-                IQueryable<Employee> rydolistemployees = from rydoemployee in rydodbContext.Employees
-                                                          select rydoemployee;
-                GridView1.DataSource = rydolistemployees.ToList();
+            IQueryable<Employee> rydolistemployees = from rydoemployee in rydodbContext.Employees
+                                                     select rydoemployee;
+            GridView1.DataSource = rydolistemployees.ToList();
             GridView1.DataBind();
             //END-----------------List of Employees in easy way.--------------
 
@@ -50,7 +50,7 @@ namespace LINQTOSQL
             //        ORDER BY[Extent1].[Salary]
             //        DESC
 
-         // END----------------List of "MALE" Employees.--------
+            // END----------------List of "MALE" Employees.--------
         }
     }
 }
