@@ -44,6 +44,15 @@ namespace LINQTOSQL
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<GetEmployees_Result>("GetEmployees");
         }
     
+        public virtual ObjectResult<GetEmployeesByDepartment_Result> GetEmployeesByDepartment(Nullable<int> departmentId, ObjectParameter departmentName)
+        {
+            var departmentIdParameter = departmentId.HasValue ?
+                new ObjectParameter("DepartmentId", departmentId) :
+                new ObjectParameter("DepartmentId", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<GetEmployeesByDepartment_Result>("GetEmployeesByDepartment", departmentIdParameter, departmentName);
+        }
+    
         public virtual int InsertEmployee(string firstName, string lastName, string gender, Nullable<int> salary, Nullable<int> departmentId)
         {
             var firstNameParameter = firstName != null ?
